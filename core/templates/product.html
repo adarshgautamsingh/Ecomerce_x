@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block content %}
+    
+<div class="container mt-5">
+  <div class="card shadow-lg rounded-lg border-0">
+    <div class="card-header bg-gradient-primary text-white">
+      <h5 class="card-title mb-0">Product Name</h5>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4">
+          <img src="{{ product.image.url }}" class="img-fluid rounded" alt="Product Image">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text">{{ product.description }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    {% if product.is_sale %}
+                        <span class="text-muted text-decoration-line-through">${{ product.price }}</span>
+                        <span class="badge bg-danger">Sale</span>
+                        <span class="h5">${{ product.sale_price }}</span>
+                    {% else %}
+                        <span class="h5">${{ product.price }}</span>
+                        <br/>
+                    {% endif %}
+                    <br/><br/>
+                    <div class="row justify-content-center">
+                      <div class="col-mid-2">Quantity:</div>
+                      <div class="col-mid-2">
+                    <select class="form-select"id="qty-cart" >
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="3">4</option>
+                      <option value="3">5</option>
+                    </select>
+                  </div>
+                </div>
+                    <br/><br/>
+            <button type="button"value="{{product.id }}" class="btn btn-primary btn-lg" id="add-cart">Add to Cart</button>
+            <div class="dropdown">
+              <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                More Actions
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a href="{%url 'index'%}" class ="btn btn-secondary">Home </a>
+                <a class="dropdown-item" href="#">Add to Wishlist</a>
+                <a class="dropdown-item" href="#">Share</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer text-muted bg-light">
+      <p class="mb-0">Last updated: 2024-03-17</p>
+    </div>
+  </div>
+</div>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<script>
+  $(document).on('click','#add-cart',function(e){
+    e.preventDefault();
+    $.ajax({
+        type:'POST',
+        url:'{% url 'cart_add'%}',
+        data:{
+            product_id:$('#add-cart').val(),
+            product_qty:$('#qty-cart option:selected').text(),
+            csrfmiddlewaretoken:'{{ csrf_token }}',
+            action:'post'
+        },
+        success:function(json){
+           // console.log(json)
+           document.getElementById("cart_quantity").textContent=json.qty;
+        },
+        error:function(xhr,errmsg,err){
+            // Handle error
+        }
+    });
+});
+
+
+
+</script>
+{% endblock %}

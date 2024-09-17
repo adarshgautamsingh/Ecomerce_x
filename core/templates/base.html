@@ -1,0 +1,244 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fashion Home</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Custom Styles -->
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <style>
+        /* Custom Styles */
+        /* Background Gradient */
+        <header class="bg-light-blue py-5 text-center">
+            <div class="container">
+                <h1 class="display-4 fw-bolder text-dark mb-4">Shop in Style</h1>
+                <p class="lead fw-normal text-muted mb-0">Discover the latest trends with our curated collection</p>
+            </div>
+        </header>
+        
+/* Advanced Card Design */
+/* Advanced Card Design */
+/* Advanced Card Design */
+/* Custom Styles */
+/* Background Gradient */
+.bg-light-blue {
+    background-color: #cfe2ff; /* Light blue background color */
+}
+
+/* Advanced Card Design */
+body {
+    background: linear-gradient(90deg, #ff00cc 0%, #3333ff 100%);
+    color: white;
+}
+
+/* Card Design */
+.card {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img-top {
+    border-radius: 15px 15px 0 0;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    color: white;
+}
+
+.card-text {
+    color: #f0f0f0;
+}
+
+/* Button Design */
+.btn-custom {
+    background-color: #ffcc00;
+    border-color: #ffcc00;
+    color: #333333;
+}
+
+.btn-custom:hover {
+    background-color: #ffdb4d;
+    border-color: #ffdb4d;
+    color: #333333;
+}
+
+/* Tooltip */
+.tooltip-inner {
+    background-color: #333333;
+    font-size: 0.9rem;
+}
+
+/* Search Bar */
+.search-box {
+    position: relative;
+}
+
+.search-box input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ffffff;
+    border-radius: 25px;
+    background-color: transparent;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.search-box input[type="text"]:focus {
+    outline: none;
+    border-color: #ffcc00;
+}
+
+.search-box button {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.search-box button:focus {
+    outline: none;
+}
+
+        .navbar {
+            padding: 20px 0;
+        }
+        
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #333; /* Custom brand color */
+        }
+        
+        .navbar-toggler {
+            border: none;
+        }
+        
+        .nav-link {
+            color: #333; /* Custom link color */
+            font-weight: bold;
+        }
+        
+        .nav-link:hover {
+            color: #ff6600; /* Custom link hover color */
+        }
+        
+        .dropdown-menu {
+            background-color: #f8f9fa; /* Custom dropdown background color */
+        }
+        
+        .dropdown-item {
+            color: #333; /* Custom dropdown item color */
+        }
+        
+        .dropdown-item:hover {
+            background-color: #e9ecef; /* Custom dropdown item hover background color */
+        }
+        
+        .input-group {
+            margin-right: 20px; /* Adjust search input margin */
+        }
+        
+        .form-control {
+            border-radius: 25px;
+            border-color: #ccc; /* Custom search input border color */
+        }
+        
+        .btn-outline-secondary {
+            border-color: #ccc; /* Custom search button border color */
+            border-radius: 25px;
+        }
+        
+        .btn-outline-secondary:hover {
+            border-color: #999; /* Custom search button hover border color */
+        }
+        
+        .btn-outline-dark {
+            border-color: #333; /* Custom cart button border color */
+            border-radius: 25px;
+            font-weight: bold;
+        }
+        
+        .btn-outline-dark:hover {
+            border-color: #222; /* Custom cart button hover border color */
+        }
+        .bg-light-blue {
+            background-color: #cfe2ff; /* Light blue background color */
+        }
+        
+         /* New vibrant gradient */
+        
+        .display-4 {
+            font-size: 3.5rem; /* Increase font size for a bold headline */
+        }
+        
+        .text-white {
+            color: #ffffff !important; /* Ensure text is white */
+        }
+        
+        .lead {
+            font-size: 1.25rem; /* Increase font size for better readability */
+        }
+        
+        /* Animation for Header */
+        .container {
+            animation: fadeInUp 1s ease; /* Add fadeInUp animation */
+        }
+        
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }        
+
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+     {% include "navbar.html" %}
+       {% if messages %}
+       {% for message in messages %}
+       <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Hey Adarsh!</strong> You should check in on some of those fields below.
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      
+       {% endfor %}
+       {% endif %}
+    {% block content %}
+       {% endblock %}
+    <!-- Section -->
+   
+
+    <!-- Footer -->
+    <footer class="py-4 bg-dark text-white text-center">
+        <div class="container">
+        
